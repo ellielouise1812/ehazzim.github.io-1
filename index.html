@@ -35,39 +35,198 @@
   background-color:cadetblue;
 }
 
-#section4 {
-  height: 920px;
-  background-color:sienna;
+#testimonials {
+  height: 450px;
+  background-color:white;
 }
 
 </style>
 
 <body>
-
-    <div class="main" id="header">
+    <section id="header">
         <h2>Header</h2>
-    </div>
-    
-    <div class="main" id="section1">
-        <h2>Section 1</h2>
-    </div>
-      
-    <div class="main" id="section2">
-        <h2>Section 2</h2>
-    </div>
-      
-    <div class="main" id="section3">
-        <h2>Section 3</h2>
-    </div>
+    </section>
 
-    <div class="main" id="section4">
-        <h2>Section 4</h2>
-    </div>
+    <section id="section1">
+        <h2>Section 1</h2>
+    </section>
+      
+    <section id="section2">
+        <h2>Section 2</h2>
+    </section>
+      
+    <section id="section3">
+        <h2>Section 3</h2>
+    </section>
+
+<!-- Section 4: Testimonial HTML code, which sets up reviews from customers -->
+    <section id="testimonials">
+      <div id="testim" class="testim">
+        <div class="wrap">
+          <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
+          <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
+
+                        <ul id="testim-dots" class="dots">
+                            <li class="dot active"></li><!--
+                            --><li class="dot"></li><!--
+                            --><li class="dot"></li><!--
+                            --><li class="dot"></li><!--
+                            --><li class="dot"></li>
+                        </ul>
+                        <div id="testim-content" class="cont">
+                            <div class="active">
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/5231/5231019.png" alt=""></div>
+                                <h2>Emily Williams</h2>
+                                <p>"I had an amazing experience booking my vacation through this travel site. The process was smooth and easy, and I was able to find the perfect deal for my budget. Customer service was also top-notch and very helpful in answering all of my questions and addressing any concerns I had. Highly recommend!"</p>                    
+                            </div>
+        
+                            <div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6939/6939927.png" alt=""></div>
+                                <h2>Laura Martinez</h2>
+                                <p>"I've been using this travel booking site for years and have never been disappointed. The selection of options is always great, and I appreciate being able to easily compare prices and amenities. I also love the loyalty program they have, it's always a nice perk to get discounts on future bookings."</p>                    
+                            </div>
+        
+                            <div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6939/6939926.png" alt=""></div>
+                                <h2>Amanda Taylor</h2>
+                                <p>"I recently booked a last-minute trip through this travel site and it was a breeze. The website is user-friendly and I was able to find exactly what I needed in no time. Plus, the prices were very reasonable. I will definitely be using this site for all of my future travel needs."</p>                    
+                            </div>
+        
+                            <div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6785/6785856.png" alt=""></div>
+                                <h2>Michael Brown</h2>
+                                <p>"I had an excellent experience using this travel booking site to plan my honeymoon. They had a wide variety of options to choose from and the customer service team was extremely helpful in answering all of my questions and making sure everything was perfect for our trip. Highly recommend!"</p>                    
+                            </div>
+        
+                            <div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6069/6069036.png" alt=""></div>
+                                <h2>Matthew Lee</h2>
+                                <p>"I was very impressed with the customer service I received from this travel booking site. I had an issue with my booking and they went above and beyond to resolve it for me and make sure my trip went as smoothly as possible. I will definitely be using them for all of my future travel needs."</p>                    
+                            </div>
+        
+                        </div>
+        
+                      </div>
+                    </div>
+
+  </section>
+
+  <script src="https://use.fontawesome.com/1744f3f671.js"></script>
+
+</body>
 
 <script>
 
-</script>
+  // Section 4: Testimonials script to make the testimonials move
+  // vars
+'use strict'
+var	testim = document.getElementById("testim"),
+		testimDots = Array.prototype.slice.call(document.getElementById("testim-dots").children),
+    testimContent = Array.prototype.slice.call(document.getElementById("testim-content").children),
+    testimLeftArrow = document.getElementById("left-arrow"),
+    testimRightArrow = document.getElementById("right-arrow"),
+    testimSpeed = 4500,
+    currentSlide = 0,
+    currentActive = 0,
+    testimTimer,
+		touchStartPos,
+		touchEndPos,
+		touchPosDiff,
+		ignoreTouch = 30;
+;
 
-</body>
+window.onload = function() {
+
+    // Testim Script
+    function playSlide(slide) {
+        for (var k = 0; k < testimDots.length; k++) {
+            testimContent[k].classList.remove("active");
+            testimContent[k].classList.remove("inactive");
+            testimDots[k].classList.remove("active");
+        }
+
+        if (slide < 0) {
+            slide = currentSlide = testimContent.length-1;
+        }
+
+        if (slide > testimContent.length - 1) {
+            slide = currentSlide = 0;
+        }
+
+        if (currentActive != currentSlide) {
+            testimContent[currentActive].classList.add("inactive");            
+        }
+        testimContent[slide].classList.add("active");
+        testimDots[slide].classList.add("active");
+
+        currentActive = currentSlide;
+    
+        clearTimeout(testimTimer);
+        testimTimer = setTimeout(function() {
+            playSlide(currentSlide += 1);
+        }, testimSpeed)
+    }
+
+    testimLeftArrow.addEventListener("click", function() {
+        playSlide(currentSlide -= 1);
+    })
+
+    testimRightArrow.addEventListener("click", function() {
+        playSlide(currentSlide += 1);
+    })    
+
+    for (var l = 0; l < testimDots.length; l++) {
+        testimDots[l].addEventListener("click", function() {
+            playSlide(currentSlide = testimDots.indexOf(this));
+        })
+    }
+
+    playSlide(currentSlide);
+
+    // keyboard shortcuts
+    document.addEventListener("keyup", function(e) {
+        switch (e.keyCode) {
+            case 37:
+                testimLeftArrow.click();
+                break;
+                
+            case 39:
+                testimRightArrow.click();
+                break;
+
+            case 39:
+                testimRightArrow.click();
+                break;
+
+            default:
+                break;
+        }
+    })
+		
+		testim.addEventListener("touchstart", function(e) {
+				touchStartPos = e.changedTouches[0].clientX;
+		})
+	
+		testim.addEventListener("touchend", function(e) {
+				touchEndPos = e.changedTouches[0].clientX;
+			
+				touchPosDiff = touchStartPos - touchEndPos;
+			
+				console.log(touchPosDiff);
+				console.log(touchStartPos);	
+				console.log(touchEndPos);	
+
+			
+				if (touchPosDiff > 0 + ignoreTouch) {
+						testimLeftArrow.click();
+				} else if (touchPosDiff < 0 - ignoreTouch) {
+						testimRightArrow.click();
+				} else {
+					return;
+				}
+			
+		})
+}
+</script>
 
 </html>
