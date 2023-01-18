@@ -30,9 +30,9 @@
   background-color:mediumseagreen;
 }
 
-#section3 {
+#topdestinations {
   height: 920px;
-  background-color:cadetblue;
+  background-color: white;
 }
 
 #testimonials {
@@ -54,9 +54,23 @@
     <section id="section2">
         <h2>Section 2</h2>
     </section>
-      
-    <section id="section3">
-        <h2>Section 3</h2>
+
+<!-- Section 3: Top destinations with photos and captions -->
+    <section id="topdestinations">
+        <p3>TOP</p3>
+        <p></p>
+        <p3>DESTINATIONS</p3>
+        <div class="grid">
+            <div class="item" style="background-image: url(https://images.unsplash.com/photo-1439209306665-700c9bca794c?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=)" alt="Shipwrecked boat on beach"></div>
+            
+            <div class="item" style="background-image: url(https://images.unsplash.com/photo-1466853817435-05b43fe45b39?dpr=1&auto=compress,format&fit=crop&w=1199&h=871&q=80&cs=tinysrgb&crop=)" alt="Starry night on mountainside"></div>
+            
+            <div class="item" style="background-image: url(https://images.unsplash.com/photo-1488572384981-eac03dfeb6b9?dpr=1&auto=compress,format&fit=crop&w=1199&h=799&q=80&cs=tinysrgb&crop=)" alt="Person hiking through mountains"></div>
+            
+            <div class="item" style="background-image: url(https://images.unsplash.com/photo-1470091688026-38b51162c8df?dpr=1&auto=compress,format&fit=crop&w=1199&h=750&q=80&cs=tinysrgb&crop=)" alt="Town by the riverside"></div>
+            
+            <div class="item" style="background-image: url(https://images.unsplash.com/photo-1475139450941-3b6464b2dde3?dpr=1&auto=compress,format&fit=crop&w=1199&h=673&q=80&cs=tinysrgb&crop=)" alt="Aerial view of beach"></div>
+        </div>
     </section>
 
 <!-- Section 4: Testimonial HTML code, which sets up reviews from customers -->
@@ -75,31 +89,31 @@
                         </ul>
                         <div id="testim-content" class="cont">
                             <div class="active">
-                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/5231/5231019.png" alt=""></div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/5231/5231019.png" alt="Emily"></div>
                                 <h2>Emily Williams</h2>
                                 <p>"I had an amazing experience booking my vacation through this travel site. The process was smooth and easy, and I was able to find the perfect deal for my budget. Customer service was also top-notch and very helpful in answering all of my questions and addressing any concerns I had. Highly recommend!"</p>                    
                             </div>
         
                             <div>
-                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6939/6939927.png" alt=""></div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6939/6939927.png" alt="Laura"></div>
                                 <h2>Laura Martinez</h2>
                                 <p>"I've been using this travel booking site for years and have never been disappointed. The selection of options is always great, and I appreciate being able to easily compare prices and amenities. I also love the loyalty program they have, it's always a nice perk to get discounts on future bookings."</p>                    
                             </div>
         
                             <div>
-                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6939/6939926.png" alt=""></div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6939/6939926.png" alt="Amanda"></div>
                                 <h2>Amanda Taylor</h2>
                                 <p>"I recently booked a last-minute trip through this travel site and it was a breeze. The website is user-friendly and I was able to find exactly what I needed in no time. Plus, the prices were very reasonable. I will definitely be using this site for all of my future travel needs."</p>                    
                             </div>
         
                             <div>
-                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6785/6785856.png" alt=""></div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6785/6785856.png" alt="Michael"></div>
                                 <h2>Michael Brown</h2>
                                 <p>"I had an excellent experience using this travel booking site to plan my honeymoon. They had a wide variety of options to choose from and the customer service team was extremely helpful in answering all of my questions and making sure everything was perfect for our trip. Highly recommend!"</p>                    
                             </div>
         
                             <div>
-                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6069/6069036.png" alt=""></div>
+                                <div class="img"><img src="https://cdn-icons-png.flaticon.com/512/6069/6069036.png" alt="Matthew"></div>
                                 <h2>Matthew Lee</h2>
                                 <p>"I was very impressed with the customer service I received from this travel booking site. I had an issue with my booking and they went above and beyond to resolve it for me and make sure my trip went as smoothly as possible. I will definitely be using them for all of my future travel needs."</p>                    
                             </div>
@@ -116,9 +130,10 @@
 </body>
 
 <script>
+// Section 3: click function for top destinations to move through pictures + expand captions
 
-  // Section 4: Testimonials script to make the testimonials move
-  // vars
+// Section 4: Testimonials script to make the testimonials move
+// vars
 'use strict'
 var	testim = document.getElementById("testim"),
 		testimDots = Array.prototype.slice.call(document.getElementById("testim-dots").children),
